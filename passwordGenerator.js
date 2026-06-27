@@ -6,6 +6,10 @@ const SPECIAL = '!@#$%^&*'
 const nextRandom = (number) => (16807 * number) % 2147483647;
 
 export const generatePassword = (length, seed, options = {}) => {
+    if (length <= 0) return ''
+    if (seed === 0) seed = 1
+    seed = Math.abs(seed)
+
     const { useUppercase = true, useDigits = true, useSpecial = false } = options;
     let alphabet = LOWERCASE;
 
